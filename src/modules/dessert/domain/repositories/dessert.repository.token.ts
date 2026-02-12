@@ -1,0 +1,1 @@
+export const DESSERT_REPOSITORY = Symbol('DESSERT_REPOSITORY');

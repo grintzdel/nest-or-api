@@ -1,0 +1,366 @@
+{
+  "info": {
+    "name": "Chez Nest-Or API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Pizzas",
+      "item": [
+        {
+          "name": "List all pizzas",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/pizzas",
+              "host": ["{{baseUrl}}"],
+              "path": ["pizzas"]
+            }
+          }
+        },
+        {
+          "name": "Get pizza by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/pizzas/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["pizzas", "1"]
+            }
+          }
+        },
+        {
+          "name": "Search by ingredient",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/pizzas?ingredient=mozzarella",
+              "host": ["{{baseUrl}}"],
+              "path": ["pizzas"],
+              "query": [{ "key": "ingredient", "value": "mozzarella" }]
+            }
+          }
+        },
+        {
+          "name": "Search by multiple ingredients",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/pizzas?ingredients=tomate,mozzarella",
+              "host": ["{{baseUrl}}"],
+              "path": ["pizzas"],
+              "query": [{ "key": "ingredients", "value": "tomate,mozzarella" }]
+            }
+          }
+        },
+        {
+          "name": "Create pizza",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/pizzas",
+              "host": ["{{baseUrl}}"],
+              "path": ["pizzas"]
+            },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sicilienne\",\n  \"price\": 13,\n  \"ingredients\": [\"tomate\", \"mozzarella\", \"anchois\", \"olives\"],\n  \"available\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Update pizza (PUT)",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/pizzas/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["pizzas", "1"]
+            },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Margherita Classique\",\n  \"price\": 9,\n  \"ingredients\": [\"tomate\", \"mozzarella\", \"basilic frais\"],\n  \"available\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete pizza",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/pizzas/6",
+              "host": ["{{baseUrl}}"],
+              "path": ["pizzas", "6"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "item": [
+        {
+          "name": "List all drinks",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/drinks",
+              "host": ["{{baseUrl}}"],
+              "path": ["drinks"]
+            }
+          }
+        },
+        {
+          "name": "Get drink by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/drinks/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["drinks", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create drink",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/drinks",
+              "host": ["{{baseUrl}}"],
+              "path": ["drinks"]
+            },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jus d'orange\",\n  \"price\": 3,\n  \"size\": \"25cl\",\n  \"withAlcohol\": false,\n  \"available\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Update drink (PUT)",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/drinks/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["drinks", "1"]
+            },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Coca-Cola Zero\",\n  \"price\": 2.8,\n  \"size\": \"33cl\",\n  \"withAlcohol\": false,\n  \"available\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete drink",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/drinks/6",
+              "host": ["{{baseUrl}}"],
+              "path": ["drinks", "6"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "item": [
+        {
+          "name": "List all desserts",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/desserts",
+              "host": ["{{baseUrl}}"],
+              "path": ["desserts"]
+            }
+          }
+        },
+        {
+          "name": "Get dessert by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/desserts/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["desserts", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create dessert",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/desserts",
+              "host": ["{{baseUrl}}"],
+              "path": ["desserts"]
+            },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Crème brûlée\",\n  \"price\": 5.5,\n  \"available\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Update dessert (PUT)",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/desserts/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["desserts", "1"]
+            },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Tiramisu maison\",\n  \"price\": 6,\n  \"available\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete dessert",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/desserts/4",
+              "host": ["{{baseUrl}}"],
+              "path": ["desserts", "4"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "List all orders",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders"]
+            }
+          }
+        },
+        {
+          "name": "Get order by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/orders/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create order (with menu discount)",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders"]
+            },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pizzas\": [1, 3],\n  \"drinks\": [1],\n  \"desserts\": [1]\n}"
+            }
+          }
+        },
+        {
+          "name": "Create order (no discount - alcoholic drink)",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders"]
+            },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pizzas\": [2],\n  \"drinks\": [4],\n  \"desserts\": [2]\n}"
+            }
+          }
+        },
+        {
+          "name": "Create order (no discount - no dessert)",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders"]
+            },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pizzas\": [4],\n  \"drinks\": [1],\n  \"desserts\": []\n}"
+            }
+          }
+        },
+        {
+          "name": "Update order (PUT)",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/orders/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "1"]
+            },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pizzas\": [2, 4],\n  \"drinks\": [2],\n  \"desserts\": [3]\n}"
+            }
+          }
+        },
+        {
+          "name": "Mark order processed (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "url": {
+              "raw": "{{baseUrl}}/orders/1/processed",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "1", "processed"]
+            },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"processed\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete order",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/orders/2",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "2"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

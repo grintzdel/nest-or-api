@@ -1,0 +1,1 @@
+export const DRINK_REPOSITORY = Symbol('DRINK_REPOSITORY');

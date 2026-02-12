@@ -1,0 +1,1 @@
+export const PIZZA_REPOSITORY = Symbol('PIZZA_REPOSITORY');
