@@ -67,9 +67,14 @@ export class ValidateOrderItemsUseCase {
       dessertEntities,
     );
 
-    const grossPrice = totalPrice + discountAmount;
+    const menuSubtotal = this.menuService.calculateMenuSubtotal(
+      pizzaEntities,
+      drinkEntities,
+      dessertEntities,
+    );
+
     const discountPercentage =
-      grossPrice > 0 ? (discountAmount / grossPrice) * 100 : 0;
+      menuSubtotal > 0 ? (discountAmount / menuSubtotal) * 100 : 0;
 
     return {
       pizzas: data.pizzas,

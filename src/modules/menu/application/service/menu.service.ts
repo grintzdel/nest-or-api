@@ -27,4 +27,16 @@ export class MenuService {
   ): number {
     return this.calculateDiscountUseCase.execute(pizzas, drinks, desserts);
   }
+
+  calculateMenuSubtotal(
+    pizzas: PizzaEntity[],
+    drinks: DrinkEntity[],
+    desserts: DessertEntity[],
+  ): number {
+    return this.calculateDiscountUseCase.getMenuSubtotal(
+      pizzas,
+      drinks,
+      desserts,
+    );
+  }
 }

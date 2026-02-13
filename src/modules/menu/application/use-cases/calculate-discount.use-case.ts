@@ -10,6 +10,22 @@ export class CalculateDiscountUseCase {
     drinks: DrinkEntity[],
     desserts: DessertEntity[],
   ): number {
+    return this.getMenuDetails(pizzas, drinks, desserts).discount;
+  }
+
+  getMenuSubtotal(
+    pizzas: PizzaEntity[],
+    drinks: DrinkEntity[],
+    desserts: DessertEntity[],
+  ): number {
+    return this.getMenuDetails(pizzas, drinks, desserts).menuSubtotal;
+  }
+
+  private getMenuDetails(
+    pizzas: PizzaEntity[],
+    drinks: DrinkEntity[],
+    desserts: DessertEntity[],
+  ): { discount: number; menuSubtotal: number } {
     const nonAlcoholicDrinks = drinks.filter((d) => !d.withAlcohol);
 
     const menuCount = Math.min(
@@ -18,7 +34,7 @@ export class CalculateDiscountUseCase {
       desserts.length,
     );
 
-    if (menuCount === 0) return 0;
+    if (menuCount === 0) return { discount: 0, menuSubtotal: 0 };
 
     const sortedPizzaPrices = pizzas.map((p) => p.price).sort((a, b) => a - b);
     const sortedDrinkPrices = nonAlcoholicDrinks
@@ -29,12 +45,17 @@ export class CalculateDiscountUseCase {
       .sort((a, b) => a - b);
 
     let discount = 0;
+    let menuSubtotal = 0;
     for (let i = 0; i < menuCount; i++) {
       const menuTotal =
         sortedPizzaPrices[i] + sortedDrinkPrices[i] + sortedDessertPrices[i];
+      menuSubtotal += menuTotal;
       discount += menuTotal * 0.1;
     }
 
-    return Math.round(discount * 100) / 100;
+    return {
+      discount: Math.round(discount * 100) / 100,
+      menuSubtotal: Math.round(menuSubtotal * 100) / 100,
+    };
   }
 }
