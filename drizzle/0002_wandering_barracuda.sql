@@ -1,0 +1,2 @@
+ALTER TABLE "orders" ADD COLUMN "discount_amount" double precision DEFAULT 0 NOT NULL;--> statement-breakpoint
+ALTER TABLE "orders" ADD COLUMN "discount_percentage" double precision DEFAULT 0 NOT NULL;

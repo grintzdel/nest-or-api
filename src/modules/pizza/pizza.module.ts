@@ -7,6 +7,7 @@ import { CreatePizzaUseCase } from './application/use-cases/create-pizza.use-cas
 import { UpdatePizzaUseCase } from './application/use-cases/update-pizza.use-case';
 import { DeletePizzaUseCase } from './application/use-cases/delete-pizza.use-case';
 import { SearchPizzasUseCase } from './application/use-cases/search-pizzas.use-case';
+import { FilterPizzasUseCase } from './application/use-cases/filter-pizzas.use-case';
 import { PizzaController } from './presentation/controllers/pizza.controller';
 
 @Module({
@@ -20,6 +21,7 @@ import { PizzaController } from './presentation/controllers/pizza.controller';
     UpdatePizzaUseCase,
     DeletePizzaUseCase,
     SearchPizzasUseCase,
+    FilterPizzasUseCase,
   ],
   exports: [PizzaService],
 })

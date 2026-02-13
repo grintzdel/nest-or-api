@@ -4,6 +4,8 @@ export interface OrderProps {
   drinks: number[];
   desserts: number[];
   totalPrice: number;
+  discountAmount: number;
+  discountPercentage: number;
   processed: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -20,6 +22,8 @@ export class OrderEntity {
       drinks: data.drinks ?? [],
       desserts: data.desserts ?? [],
       totalPrice: data.totalPrice ?? 0,
+      discountAmount: data.discountAmount ?? 0,
+      discountPercentage: data.discountPercentage ?? 0,
       processed: data.processed ?? false,
       createdAt: data.createdAt ?? new Date(),
       updatedAt: data.updatedAt ?? new Date(),
@@ -45,6 +49,14 @@ export class OrderEntity {
 
   get totalPrice(): number {
     return this.props.totalPrice;
+  }
+
+  get discountAmount(): number {
+    return this.props.discountAmount;
+  }
+
+  get discountPercentage(): number {
+    return this.props.discountPercentage;
   }
 
   get processed(): boolean {

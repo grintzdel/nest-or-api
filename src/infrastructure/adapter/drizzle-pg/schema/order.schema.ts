@@ -13,6 +13,8 @@ export const orders = pgTable('orders', {
   drinks: integer('drinks').array().notNull().default([]),
   desserts: integer('desserts').array().notNull().default([]),
   totalPrice: doublePrecision('total_price').notNull(),
+  discountAmount: doublePrecision('discount_amount').notNull().default(0),
+  discountPercentage: doublePrecision('discount_percentage').notNull().default(0),
   processed: boolean('processed').notNull().default(false),
   createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow(),

@@ -12,6 +12,7 @@ import { UpdateOrderUseCase } from './application/use-cases/update-order.use-cas
 import { DeleteOrderUseCase } from './application/use-cases/delete-order.use-case';
 import { UpdateOrderProcessedUseCase } from './application/use-cases/update-order-processed.use-case';
 import { FilterOrdersUseCase } from './application/use-cases/filter-orders.use-case';
+import { ValidateOrderItemsUseCase } from './application/use-cases/validate-order-items.use-case';
 import { OrderController } from './presentation/controllers/order.controller';
 
 @Module({
@@ -32,6 +33,7 @@ import { OrderController } from './presentation/controllers/order.controller';
     DeleteOrderUseCase,
     UpdateOrderProcessedUseCase,
     FilterOrdersUseCase,
+    ValidateOrderItemsUseCase,
   ],
   exports: [OrderService],
 })

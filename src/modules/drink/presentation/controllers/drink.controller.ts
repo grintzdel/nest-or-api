@@ -10,40 +10,27 @@ import {
   Query,
 } from '@nestjs/common';
 import { DrinkService } from '../../application/service/drink.service';
-import { DrinkSizeEnum } from '../../domain/enums/drink-size.enum';
 import { DrinkResDto } from '../dtos/drink.res.dto';
 import { CreateDrinkReqDto } from '../dtos/create-drink.req.dto';
 import { UpdateDrinkReqDto } from '../dtos/update-drink.req.dto';
+import { ListDrinksQueryDto } from '../dtos/list-drinks.query.dto';
 
 @Controller('drinks')
 export class DrinkController {
   constructor(private readonly drinkService: DrinkService) {}
 
   @Get()
-  async list(
-    @Query('name') name?: string,
-    @Query('available') available?: string,
-    @Query('withAlcohol') withAlcohol?: string,
-    @Query('size') size?: DrinkSizeEnum,
-  ): Promise<DrinkResDto[]> {
-    const hasFilters =
-      name !== undefined ||
-      available !== undefined ||
-      withAlcohol !== undefined ||
-      size !== undefined;
-
-    if (hasFilters) {
-      const drinks = await this.drinkService.filterDrinks({
-        name,
-        available: available !== undefined ? available === 'true' : undefined,
-        withAlcohol:
-          withAlcohol !== undefined ? withAlcohol === 'true' : undefined,
-        size,
-      });
-      return drinks.map((d) => d.toJson());
-    }
-
-    const drinks = await this.drinkService.listDrinks();
+  async list(@Query() query: ListDrinksQueryDto): Promise<DrinkResDto[]> {
+    const drinks = await this.drinkService.filterDrinks({
+      name: query.name,
+      available:
+        query.available !== undefined ? query.available === 'true' : undefined,
+      withAlcohol:
+        query.withAlcohol !== undefined
+          ? query.withAlcohol === 'true'
+          : undefined,
+      size: query.size,
+    });
     return drinks.map((d) => d.toJson());
   }
 

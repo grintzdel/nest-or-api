@@ -4,6 +4,8 @@ export class OrderResDto {
   drinks: number[];
   desserts: number[];
   totalPrice: number;
+  discountAmount: number;
+  discountPercentage: number;
   processed: boolean;
   createdAt: Date;
   updatedAt: Date;

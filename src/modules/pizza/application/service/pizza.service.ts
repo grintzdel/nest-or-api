@@ -5,6 +5,8 @@ import { CreatePizzaUseCase } from '../use-cases/create-pizza.use-case';
 import { UpdatePizzaUseCase } from '../use-cases/update-pizza.use-case';
 import { DeletePizzaUseCase } from '../use-cases/delete-pizza.use-case';
 import { SearchPizzasUseCase } from '../use-cases/search-pizzas.use-case';
+import { FilterPizzasUseCase } from '../use-cases/filter-pizzas.use-case';
+import type { PizzaFilters } from '../use-cases/filter-pizzas.use-case';
 import { PizzaEntity } from '../../domain/entities/pizza.entity';
 
 @Injectable()
@@ -16,6 +18,7 @@ export class PizzaService {
     private readonly updatePizzaUseCase: UpdatePizzaUseCase,
     private readonly deletePizzaUseCase: DeletePizzaUseCase,
     private readonly searchPizzasUseCase: SearchPizzasUseCase,
+    private readonly filterPizzasUseCase: FilterPizzasUseCase,
   ) {}
 
   async listPizzas(): Promise<PizzaEntity[]> {
@@ -53,5 +56,9 @@ export class PizzaService {
 
   async searchByIngredients(ingredients: string[]): Promise<PizzaEntity[]> {
     return await this.searchPizzasUseCase.execute(ingredients);
+  }
+
+  async filterPizzas(filters: PizzaFilters): Promise<PizzaEntity[]> {
+    return await this.filterPizzasUseCase.execute(filters);
   }
 }

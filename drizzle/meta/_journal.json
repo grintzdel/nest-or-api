@@ -15,6 +15,13 @@
       "when": 1770906114424,
       "tag": "0001_fine_mastermind",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1770972730511,
+      "tag": "0002_wandering_barracuda",
+      "breakpoints": true
     }
   ]
 }

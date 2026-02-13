@@ -15,23 +15,18 @@ import { OrderResDto } from '../dtos/order.res.dto';
 import { CreateOrderReqDto } from '../dtos/create-order.req.dto';
 import { UpdateOrderReqDto } from '../dtos/update-order.req.dto';
 import { UpdateOrderProcessedReqDto } from '../dtos/update-order-processed.req.dto';
+import { ListOrdersQueryDto } from '../dtos/list-orders.query.dto';
 
 @Controller('orders')
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
   @Get()
-  async list(
-    @Query('processed') processed?: string,
-  ): Promise<OrderResDto[]> {
-    if (processed !== undefined) {
-      const orders = await this.orderService.filterOrders({
-        processed: processed === 'true',
-      });
-      return orders.map((o) => o.toJson());
-    }
-
-    const orders = await this.orderService.listOrders();
+  async list(@Query() query: ListOrdersQueryDto): Promise<OrderResDto[]> {
+    const orders = await this.orderService.filterOrders({
+      processed:
+        query.processed !== undefined ? query.processed === 'true' : undefined,
+    });
     return orders.map((o) => o.toJson());
   }
 

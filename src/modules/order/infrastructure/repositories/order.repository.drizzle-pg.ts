@@ -16,10 +16,7 @@ export class OrderRepositoryDrizzlePg implements IOrderRepository {
   }
 
   async findById(id: number): Promise<OrderEntity | null> {
-    const [row] = await this.db
-      .select()
-      .from(orders)
-      .where(eq(orders.id, id));
+    const [row] = await this.db.select().from(orders).where(eq(orders.id, id));
     return row ? OrderEntity.create(row) : null;
   }
 
@@ -32,6 +29,8 @@ export class OrderRepositoryDrizzlePg implements IOrderRepository {
         drinks: data.drinks,
         desserts: data.desserts,
         totalPrice: data.totalPrice,
+        discountAmount: data.discountAmount,
+        discountPercentage: data.discountPercentage,
         processed: data.processed,
       })
       .returning();
@@ -47,6 +46,8 @@ export class OrderRepositoryDrizzlePg implements IOrderRepository {
         drinks: data.drinks,
         desserts: data.desserts,
         totalPrice: data.totalPrice,
+        discountAmount: data.discountAmount,
+        discountPercentage: data.discountPercentage,
         processed: data.processed,
         updatedAt: new Date(),
       })
